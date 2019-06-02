@@ -75,6 +75,10 @@ public class MyContainer<T> {
 
 		// #####################   CountDownLatch 实现
 
+		/**
+		 * CountDownLatch 不涉及锁定，当设置的值为零时程序继续执行，
+		 * 适用于需要线程通讯，不需要同步的时候。比用 synchronized + wait、notify 性能好一些
+		 */
 		CountDownLatch latch = new CountDownLatch(1);
 
 		new Thread(() -> {
