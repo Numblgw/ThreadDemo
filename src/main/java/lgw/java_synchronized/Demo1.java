@@ -16,7 +16,7 @@ public class Demo1{
 	 * 没有加锁，不能实现同步。
 	 * 运行会出现 “ 不同的线程打印的值相同 ” 的问题
 	 */
-	public void run1() {
+	private void run1() {
 		count--;
 		// 当线程 1 运行到这里，把变量修改了之后还没有打印该变量时，线程 2 获取了执行权并且再一次对变量减一
 		// 导致线程 1 在次访问 count时得到的是线程 2 修改之后的值
@@ -31,7 +31,7 @@ public class Demo1{
 	 * 的对象。如果某一个线程已经获取了这个对象的锁，那么其他线程就只能等该线程释
 	 * 放锁之后再获取锁。在方法抛出异常或者方法结束是会自动释放锁
 	 */
-	public /*synchronized*/ void run2() {
+	private /*synchronized*/ void run2() {
 		synchronized(this) {
 			count--;
 			System.out.println(Thread.currentThread().getName() + "count:" + count);
@@ -42,7 +42,7 @@ public class Demo1{
 	 * 给对象 o 加锁，一个 Demo1 对象中只会有一个 o 对象，所以给 o 加锁也可以保证
 	 * 多线程访问Demo1对象的时候只有一个线程持有o的锁
 	 */
-	public void run3() {
+	private void run3() {
 		synchronized(o) {
 			count--;
 			System.out.println(Thread.currentThread().getName() + "count:" + count);

@@ -15,7 +15,7 @@ public class Demo2 {
 	/**
 	 * 当线程A获取了锁之后一直在进行死循环，不会释放锁，所以其他线程永远不会执行。
 	 */
-	public void run1() {
+	private void run1() {
 		synchronized(o) {
 			while(true) {
 				System.out.println(Thread.currentThread().getName() + "正在运行。。。");
@@ -28,10 +28,9 @@ public class Demo2 {
 		}
 	}
 
-	public static void main(String[] args) {
+	private static void main(String[] args) {
 		Demo2 demo2 = new Demo2();
 
-		// 演示run2() 方法
 		new Thread(demo2::run1).start();
 		try {
 			TimeUnit.SECONDS.sleep(1);
@@ -39,8 +38,8 @@ public class Demo2 {
 			e.printStackTrace();
 		}
 		// 改变了引用o指向的对象，使得下面的线程在执行时只需要获取新的对象的锁
-		// 如果下面的线程可以执行，就说明synchronized是给堆内存中的对象加锁
 		demo2.o = new Object();
+		// 如果下面的线程可以执行，就说明 synchronized 是给堆内存中的对象加锁
 		new Thread(demo2::run1).start();
 	}
 }
