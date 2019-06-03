@@ -9,7 +9,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * @ClassName MyContainer3
- * @Description MyContainer2 的 lock/
+ * @Description MyContainer2 的 lock/Condition 实现
  * @Author Numblgw
  * @Date 2019/6/2 19:25
  */

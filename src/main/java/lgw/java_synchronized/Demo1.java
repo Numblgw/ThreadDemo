@@ -49,6 +49,19 @@ public class Demo1{
 		}
 	}
 
+	/**
+	 * 给静态方法加锁，锁住的是   Demo1.class 对象相当于 run5() 方法
+	 */
+	private static synchronized void run4() {
+
+	}
+
+	private static void run5() {
+		synchronized(Demo1.class) {
+
+		}
+	}
+
 	public static void main(String[] args) {
 		Demo1 demo1 = new Demo1();
 		for(int i = 0 ; i < 5 ; i++) {
