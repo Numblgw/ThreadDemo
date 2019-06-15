@@ -44,13 +44,19 @@
         3) 被加入的元素必须实现 java.util.concurrent.Delayed 接口 否则无法加入。   
         
     4) TransferQueue   
+        
         1) transfer 方法 会检查是否有需要获得元素的线程，如果有则直接将元素传递过去，不向队列中加入。如果没有就会阻塞。
+        
         2) 也可以调用add方法直接向队列中加元素。
+        
         3) 适用于高并发场景，生产者直接向消费者传递资源，不经过队列，效率更高。 
+        
         4) 可以用于游戏服务器接收转发消息。
         
-    5) SynchronusQueue
+    5) SynchronousQueue
+        
         1) 容量为 0 的 TransferQueue，不能调用 add 方法向队列中加元素，必须调用 put 方法。
+        
         2) put 方法就相当于 TransferQueue 的 transfer 方法，会阻塞
   
      

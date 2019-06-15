@@ -130,7 +130,11 @@ class T3 {
  *
  */
 class T4 {
-	private static T4 t4;
+	/**
+	 * ###############################################
+	 * 这里如果不加 volatile 在指令重排序时可能会出现问题。
+	 */
+	private volatile static T4 t4;
 
 	private T4() {
 
